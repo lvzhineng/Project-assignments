@@ -8,7 +8,7 @@ const int MAX = 1000;
 
 struct Node {
 	string name = "None", Email="None";
-	int age = 0, TEL = 0;
+	long long age = 0, TEL = 0;
 	Node* next = NULL;
 };
 
@@ -114,7 +114,7 @@ bool Book::IsEmpty()
 
 Node* Book::FindName()
 {
-	cout << "请输入姓名" << endl;
+	cout << "请输入姓名:" << endl;
 	string name;
 	cin >> name;
 	Node* p = head->next;
@@ -134,7 +134,7 @@ Node* Book::FindName()
 Node* Book::FindTEL()
 {
 	cout << "请输入号码";
-	int tel;
+	long long tel;
 	cin >> tel;
 	Node* p = head->next;
 	while (p != NULL) {
@@ -243,7 +243,7 @@ void Book::Read()
 	cout << "成功读取文本文件!" << endl;
 	cout << "文本内容如下:" << endl;
 	string s;
-	int t;
+	long long t;
 	while (!ifile.eof()) {	
 		ifile >> s;
 		ifile >> s;
@@ -266,8 +266,13 @@ void Book::Read()
 
 void Display()
 {
-	cout << "https://github.com/lvzhineng/Project-assignments" << endl
+	cout << "https://github.com/lvzhineng/Project-assignments/tree/master/LinkList" << endl
 		<< "=======PHONE BOOK=======" << endl;
+	cout << "1---创建" << endl << "2---添加" << endl << "3---获取当前联系人数" << endl
+		<< "4---遍历" << endl << "5---查找(电话)" << endl << "6---查找(姓名)" << endl
+		<< "7---删除联系人" << endl << "8---删除整个通讯录" << endl
+		<< "9---保存为文件" << endl << "10---读取保存过的文件" << endl << "11---清屏" << endl
+		<< "12---退出" << endl;
 }
 
 void Clear()
@@ -281,11 +286,6 @@ int main()
 	Node* p;
 	Display();
 	while (1) {
-		cout << "1---创建" << endl << "2---添加" << endl << "3---获取当前联系人数" << endl
-			<<"4---遍历"<<endl<<"5---查找(电话)" << endl<< "6---查找(姓名)" << endl 
-			<< "7---删除联系人" << endl << "8---删除整个通讯录" << endl
-			<< "9---保存为文件" << endl << "10---读取保存过的文件" << endl << "11---清屏" << endl
-			<< "12---退出" << endl;
 		int order;
 		cout << endl << "please input the order:" << endl;
 		cin >> order;
