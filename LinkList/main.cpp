@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <fstream>
 using namespace std;
-const int MAX = 100;
+const int MAX = 1000;
 
 struct Node {
 	string name = "None", Email="None";
@@ -80,6 +80,7 @@ void Display(Node* p)
 void Book::TravalBook()
 {
 	if (IsEmpty()) {
+		cout << "当前无联系人!" << endl;
 		return;
 	}
 	else {
@@ -89,6 +90,7 @@ void Book::TravalBook()
 			p = p->next;
 		}
 	}
+	cout << endl;
 }
 
 void Book::GetLength()
@@ -112,7 +114,7 @@ bool Book::IsEmpty()
 
 Node* Book::FindName()
 {
-	cout << "请输入姓名";
+	cout << "请输入姓名" << endl;
 	string name;
 	cin >> name;
 	Node* p = head->next;
@@ -179,8 +181,6 @@ void Book::DeleteAll()
 	head->next = NULL;
 }
 
-
-
 void Book::Delete()
 {
 	cout << "请选择查找待删联系人:" << endl
@@ -240,6 +240,7 @@ void Book::Read()
 		cout << "打开失败,未曾保存过文本文件!" << endl;
 		return;
 	}
+	cout << "成功读取文本文件!" << endl;
 	cout << "文本内容如下:" << endl;
 	string s;
 	int t;
@@ -259,19 +260,34 @@ void Book::Read()
 		Display(&read[n]);
 		n++;
 	}
-	cout << "成功读取文本文件" << endl;
+	cout << endl;
 	return;
 }
 
+void Display()
+{
+	cout << "https://github.com/lvzhineng/Project-assignments" << endl
+		<< "=======PHONE BOOK=======" << endl;
+}
+
+void Clear()
+{
+	system("cls");
+	Display();
+}
 int main()
 {
 	Book B;
 	Node* p;
+	Display();
 	while (1) {
-		cout << "please input the order:" << endl
-			<< "1.创建\t2.增加\t3.获取联系人数\t4.按电话查找\t5.按姓名查找\t"
-			<< "6.删除联系人\t7.删除整个通讯录\t8.保存\t9.读取保存的文件\t10.退出" << endl;
+		cout << "1---创建" << endl << "2---添加" << endl << "3---获取当前联系人数" << endl
+			<<"4---遍历"<<endl<<"5---查找(电话)" << endl<< "6---查找(姓名)" << endl 
+			<< "7---删除联系人" << endl << "8---删除整个通讯录" << endl
+			<< "9---保存为文件" << endl << "10---读取保存过的文件" << endl << "11---清屏" << endl
+			<< "12---退出" << endl;
 		int order;
+		cout << endl << "please input the order:" << endl;
 		cin >> order;
 		switch (order)
 		{
@@ -285,24 +301,30 @@ int main()
 			B.GetLength();
 			break;
 		case 4:
+			B.TravalBook();
+			break;
+		case 5:
 			p = B.FindTEL();
 			Display(p);
 			break;
-		case 5:
+		case 6:
 			p = B.FindName();
 			Display(p);
 			break;
-		case 6:
+		case 7:
 			B.Delete();
 			break;
-		case 7:
+		case 8:
 			B.DeleteAll();
 			break;
-		case 8:
+		case 9:
 			B.SaveNow();
 			break;
-		case 9:
+		case 10:
 			B.Read();
+			break;
+		case 11:
+			Clear();
 			break;
 		default:
 			for (int i = 0; i <= 100; i++) {
@@ -317,13 +339,24 @@ int main()
 	return 0;
 }
 /*
-2
+4
 Elon
-23
-12123
-234
-Alice
-14
-23525
-23423
+18
+137135135
+2114134@gg.com
+
+Tesla
+20
+1351341341
+teslaisbest@gg.com
+
+Jack
+30
+1342352451
+jack1314@gg.com
+
+lvzhineng
+19
+13675551520
+13675551520@163.com
 */
